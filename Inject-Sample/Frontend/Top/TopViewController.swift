@@ -9,7 +9,8 @@
 import UIKit
 
 class TopViewController: UIViewController {
-
+    @IBOutlet private weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(interjected(notification:)), name: .InjectBundleNotification, object: nil)
@@ -20,6 +21,11 @@ class TopViewController: UIViewController {
         let storyboard = UIStoryboard(name: String(describing: SecondViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController()!
         navigationController?.pushViewController(vc, animated: true)
+        
+        NotificationCenter.default.removeObserver(self, name: .InjectBundleNotification, object: nil)
+        
+        loadView()
+        viewDidLoad()
     }
 }
 
