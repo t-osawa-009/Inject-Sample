@@ -17,7 +17,7 @@ class TopViewController: UIViewController {
     
     @objc func interjected(notification: Notification) {
         navigationController?.popViewController(animated: false)
-        let storyboard = UIStoryboard.init(name: String(describing: SecondViewController.self), bundle: nil)
+        let storyboard = UIStoryboard(name: String(describing: SecondViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController()!
         navigationController?.pushViewController(vc, animated: true)
     }
